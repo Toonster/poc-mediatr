@@ -1,5 +1,5 @@
 ﻿using Application.Customers.Queries;
-using Domain.Customers.Repositories;
+using Application.Transactions;
 using Infrastructure.EntityFramework;
 using Infrastructure.EntityFramework.Customers;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +12,7 @@ public static class ServiceCollectionExtensions
 {
     public static void ConfigureInfrastructureLayer(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration["MediatrPocDb"];
+        var connectionString = configuration.GetConnectionString("MediatrPocDb");
 
         if (string.IsNullOrWhiteSpace(connectionString))
         {
@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
                 options => options.UseSqlServer(connectionString)
             );
 
-        services.AddTransient<ICustomerRepository, EfCustomerRepository>();
         services.AddTransient<ICustomerQueries, EfCustomerQueries>();
+        services.AddTransient<IUnitOfWork, EfUnitOfWork>();
     }
 }

@@ -1,5 +1,4 @@
-﻿using Domain.Common.Entities;
-using Domain.Customers.Entities;
+﻿using Domain.Customers.Entities;
 using Domain.Customers.Repositories;
 
 namespace Infrastructure.EntityFramework.Customers;

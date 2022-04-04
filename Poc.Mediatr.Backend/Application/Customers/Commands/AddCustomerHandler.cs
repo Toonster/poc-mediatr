@@ -11,13 +11,14 @@ public static class AddCustomer
     
     internal class Handler : IRequestHandler<Command, Guid>
     {
-        private readonly ICustomerRepository _customerRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICustomerRepository _customerRepository;
 
-        public Handler(ICustomerRepository customerRepository, IUnitOfWork unitOfWork)
+        public Handler(IUnitOfWork unitOfWork)
         {
-            _customerRepository = customerRepository;
             _unitOfWork = unitOfWork;
+            _customerRepository = _unitOfWork.CustomerRepository;
+
         }
 
 
