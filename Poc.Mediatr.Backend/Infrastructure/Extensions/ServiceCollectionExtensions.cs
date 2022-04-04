@@ -1,4 +1,7 @@
-﻿using Infrastructure.EntityFramework;
+﻿using Application.Customers.Queries;
+using Domain.Customers.Repositories;
+using Infrastructure.EntityFramework;
+using Infrastructure.EntityFramework.Customers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,5 +22,8 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<MediatrPocDbContext>(
                 options => options.UseSqlServer(connectionString)
             );
+
+        services.AddTransient<ICustomerRepository, EfCustomerRepository>();
+        services.AddTransient<ICustomerQueries, EfCustomerQueries>();
     }
 }

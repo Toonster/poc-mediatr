@@ -1,4 +1,6 @@
 ﻿using Application.Customers.Commands;
+using Application.Customers.DTO;
+using Application.Customers.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,11 +17,19 @@ public class CustomerController : ControllerBase
         _mediator = mediator;
     }
 
+    [HttpGet]
+    public async Task<ActionResult<CustomerDto?>> GetCustomer(GetCustomer.Query query)
+    {
+        var customer = await _mediator.Send(query);
+
+        return Ok(customer);
+    }
+
     [HttpPost]
     public async Task<ActionResult<Guid>> AddCustomer(AddCustomer.Command command)
     {
         var id = await _mediator.Send(command);
 
-        return Created("/api/v1/customers", id);
+        return Created(nameof(GetCustomer), id);
     }
 }
