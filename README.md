@@ -1,3 +1,4 @@
 # poc-mediatr
 Proof of Concept to check Mediatr and its features
-[![Build status](https://dev.azure.com/brentlatsch/poc-mediatr/_apis/build/status/poc-mediatr-ASP.NET%20Core-CI)](https://dev.azure.com/brentlatsch/poc-mediatr/_build/latest?definitionId=2)
+
+[![Build Status](https://dev.azure.com/brentlatsch/poc-mediatr/_apis/build/status/Toonster.poc-mediatr?branchName=main)](https://dev.azure.com/brentlatsch/poc-mediatr/_build/latest?definitionId=3&branchName=main)
